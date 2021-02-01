@@ -26,10 +26,10 @@ public class CarService {
     private final MapsClient webClientMaps;
 
     @Autowired
-    public CarService(CarRepository repository, @Qualifier("pricing") WebClient webClientPricing, @Qualifier("maps") WebClient webClientMaps) {
+    public CarService(CarRepository repository, @Qualifier("pricing") WebClient webClientPricing, @Qualifier("maps") WebClient webClientMaps, ModelMapper modelMapper) {
         this.repository = repository;
         this.webClientPricing = new PriceClient(webClientPricing);
-        this.webClientMaps = new MapsClient(webClientMaps, new ModelMapper());
+        this.webClientMaps = new MapsClient(webClientMaps, modelMapper);
     }
 
     /**
