@@ -3,6 +3,8 @@ package com.udacity.vehicles.api;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -97,6 +99,8 @@ public class CarControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$['_embedded']['carList'][0].id", is(car.getId().intValue())))
                 .andReturn();
+
+        verify(carService, times(1)).list();
     }
 
     /**
@@ -113,6 +117,7 @@ public class CarControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
         Assert.assertEquals(car.getId(), json.parse(requestResult.getResponse().getContentAsString()).getObject().getId());
+        verify(carService, times(1)).findById(any());
     }
 
     /**
@@ -127,6 +132,7 @@ public class CarControllerTest {
                 delete(new URI("/cars/" + car.getId()))
                         .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().is2xxSuccessful());
+        verify(carService, times(1)).delete(any());
     }
 
     /**
