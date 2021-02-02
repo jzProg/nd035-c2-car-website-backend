@@ -1,11 +1,11 @@
 # Pricing Service
 
 The Pricing Service is a microservice that simulates a backend that stores and retrieves the price of a vehicle given a vehicle id as input.
-
+It is registered as `pricing-service` on a `Eureka` server that is implemented and running on port 8761.
 
 ## Persistence
 
-- The prices per vehicle are stored in the `prices.json` file and are populated to microservice's `H2` in-memory database on startup.
+The prices per vehicle are stored in the `prices.json` file and are populated to microservice's `H2` in-memory database on startup.
 
 ## Instructions
 
