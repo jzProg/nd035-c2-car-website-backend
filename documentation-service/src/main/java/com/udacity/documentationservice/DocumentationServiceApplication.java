@@ -1,4 +1,4 @@
-package com.udacity.boogle.maps;
+package com.udacity.documentationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +8,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableSwagger2
-public class BoogleMapsApplication {
+public class DocumentationServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BoogleMapsApplication.class, args);
+		SpringApplication.run(DocumentationServiceApplication.class, args);
 	}
 
 }
